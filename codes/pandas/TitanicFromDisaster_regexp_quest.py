@@ -23,11 +23,18 @@ pattern1 = r'(Mr\w|Mr|Miss|Ms)'
 df_Name_extract1 = df_TFD_NS['Name'].str.extract(pattern1)
 # print(df_Name_extract1) 
 
+df_Name_extract1_drop = df_Name_extract1.dropna().copy()
+df_isnull = df_Name_extract1_drop.isnull().sum()
+# print(df_isnull)
+# 0    0
+# dtype: int64
+
 # 컬럼만들어서 때려넣기
 # print(df_TFD['SibSp'])
 df_TFD_NS['LastName'] = df_Name_extract
-df_TFD_NS['Married'] = df_Name_extract1
+df_TFD_NS['Married'] = df_Name_extract1_drop
 print(df_TFD_NS[['LastName','Married']])
+
 
 #       LastName Married
 # 0       Braund      Mr
@@ -41,3 +48,4 @@ print(df_TFD_NS[['LastName','Married']])
 # 888   Johnston    Miss
 # 889       Behr      Mr
 # 890     Dooley      Mr
+# [891 rows x 2 columns]
