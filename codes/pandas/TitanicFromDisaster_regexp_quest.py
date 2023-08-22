@@ -33,7 +33,7 @@ df_isnull = df_Name_extract1_drop.isnull().sum()
 # print(df_TFD['SibSp'])
 df_TFD_NS['LastName'] = df_Name_extract
 df_TFD_NS['Married'] = df_Name_extract1_drop
-print(df_TFD_NS[['LastName','Married']])
+# print(df_TFD_NS[['LastName','Married']])
 
 
 #       LastName Married
@@ -49,3 +49,20 @@ print(df_TFD_NS[['LastName','Married']])
 # 889       Behr      Mr
 # 890     Dooley      Mr
 # [891 rows x 2 columns]
+
+df_TFD_NS_drop = df_TFD_NS.dropna().copy()
+print(df_TFD_NS_drop[['LastName','Married']])
+#       LastName Married
+# 0       Braund      Mr
+# 1      Cumings     Mrs
+# 2    Heikkinen    Miss
+# 3     Futrelle     Mrs
+# 4        Allen      Mr
+# ..         ...     ...
+# 885       Rice     Mrs
+# 887     Graham    Miss
+# 888   Johnston    Miss
+# 889       Behr      Mr
+# 890     Dooley      Mr
+
+# [828 rows x 2 columns]
